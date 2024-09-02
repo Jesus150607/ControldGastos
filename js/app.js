@@ -157,8 +157,20 @@ actualizarG.onclick = () => {
 };
 
 const reset = () => {
-    localStorage.clear();
+    Swal.fire({
+        title: "¿Seguro de resetear el sistema?",
+        showDenyButton: true,
+        confirmButtonText: "Si",
+        denyButtonText: "No"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            localStorage.clear();
     location.reload();
+            Swal.fire("Gasto Eliminado", "", "success");
+        }
+    });
+}
+    
 }
 
 const pintarDatos = () => {
